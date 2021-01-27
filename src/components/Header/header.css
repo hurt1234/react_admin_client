@@ -1,0 +1,47 @@
+.header {
+  height: 80px;
+  background-color: #fff;
+}
+.header .top {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #1DA57A;
+  text-align: right;
+  padding-right: 20px;
+}
+.header .top .exit {
+  margin-left: 10px;
+  color: #1DA57A;
+}
+.header .top .exit:hover {
+  cursor: pointer;
+}
+.header .under {
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+}
+.header .under .left {
+  position: relative;
+  width: 25%;
+  text-align: center;
+  font-size: 20px;
+}
+.header .under .left::after {
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  transform: translateX(50%);
+  content: "";
+  border-top: 28px solid #fff;
+  border-right: 43px solid transparent;
+  border-left: 44px solid transparent;
+}
+.header .under .right {
+  text-align: right;
+  width: 75%;
+  margin-right: 20px;
+}
+.header .under .right .mid {
+  margin: 0 10px;
+}
