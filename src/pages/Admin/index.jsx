@@ -6,6 +6,7 @@ import { Layout } from 'antd';
 
 import memoryUtils from '../../utils/memoryUtils'
 import Header from '../../components/Header'
+import Foot from '../../components/Foot'
 import Nav from '../../components/Nav'
 import Home from './home'
 import User from './user'
@@ -47,7 +48,7 @@ export default class Admin extends Component {
               <Route path='/charts/pie' component={Pie}/>
           </Switch>
         </Content>
-        <Footer className="footer">推荐使用谷歌浏览器，可以获得更佳页面操作体验</Footer>
+        <Foot/>
       </Layout>
     </Layout>
     )

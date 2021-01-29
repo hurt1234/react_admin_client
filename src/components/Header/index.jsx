@@ -14,7 +14,7 @@ import './header.less'
 const { confirm } = Modal;
 class Header extends Component {
   state = {
-    username: memoryUtils.user.username,
+    username: memoryUtils.user?memoryUtils.user.username:"" ,
     time: ""
   }
   exit = () => {
