@@ -29,3 +29,34 @@ export const reqAddCategory = (categoryName, parentId) => request(BASE + '/manag
 export const reqUpdateCategory = ({categoryId, categoryName}) => request(BASE + '/manage/category/update', {categoryId, categoryName}, 'POST')
 //获取一个分类
 export const reqCategory = categoryId => request(BASE + '/manage/category/info',{categoryId})
+//获取商品
+export const reqProducts = (pageNum, pageSize) => request(BASE + '/manage/product/list', {pageNum, pageSize})
+/*
+搜索商品分页列表 (根据商品名称/商品描述)
+searchType: 搜索的类型, productName/productDesc
+ */
+export const reqSearchProducts = ({ pageNum, pageSize, searchName, searchType }) => request(BASE + "/manage/product/search",{
+  pageNum,
+  pageSize,
+  //这里的键是 变量searchType的值
+  [searchType]:searchName
+})
+// 更新商品的状态(上架/下架)
+export const reqUpdateStatus = (productId, status) => request(BASE + '/manage/product/updateStatus', {productId, status}, 'POST')
+/*
+删除图片
+*/
+export const reqDeleteImg = (name) => request(BASE + '/manage/img/delete', {name}, 'POST')
+/*
+提交商品添加更新
+*/
+export const reqAddOrUpdateProduct = (product) => request(BASE + '/manage/product/' + ( product._id?'update':'add'), product, 'POST')
+
+/*
+拉取角色列表 */
+export const reqRoles = () => request(BASE + '/manage/role/list')
+/*
+添加角色的方法 */
+export  const reqAddRole = (roleName) => request(BASE + '/manage/role/add', {roleName}, 'POST')
+// 更新角色
+export const reqUpdateRole = (role) => request(BASE + '/manage/role/update', role, 'POST')

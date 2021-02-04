@@ -33,7 +33,7 @@ export default class Admin extends Component {
     return (
       <Layout className="admin">
       <Sider><Nav></Nav></Sider>
-      <Layout>
+      <Layout style={{minHeight:"100%"}}>
         <Header/>
         <Content className="content">
           <Switch>
