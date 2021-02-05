@@ -11,7 +11,6 @@ import {
 } from '@ant-design/icons';
 import logo from '../../assets/images/logo.png'
 import './nav.less'
-import Item from 'antd/lib/list/Item';
 
 const { SubMenu } = Menu;
  class index extends Component {
