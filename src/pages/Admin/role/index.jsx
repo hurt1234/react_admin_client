@@ -59,6 +59,7 @@ export default class inedx extends Component {
    role.auth_name = memoryUtils.user.username
    const result = await reqUpdateRole(role)
    if (result.status===0) {
+
      this.setState({
        setShow:false
      })

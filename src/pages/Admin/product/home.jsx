@@ -148,13 +148,13 @@ export default class home extends Component {
     return (
       <Card title={title} extra={extra}>
         <Table
-        loading={loading}
+         loading={loading}
           bordered
           rowKey='_id'
           dataSource={products}
           columns={this.columns}
           pagination={{
-
+            current:this.pageNum,
             total,
             defaultPageSize: 3,
             showQuickJumper: true,
