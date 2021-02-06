@@ -83,6 +83,22 @@ export default class User extends Component {
     this.form.current.resetFields()
   }
   addhandleOk = () => {
+    this.form.current.validateFields().then(async user =>{
+      if(this.user) {
+        user._id = this.user._id
+      }
+      const result = await reqAddOrUpdateUser(user)
+      console.log(result);
+      if(result.status===0) {
+        this.setState({
+          addShow:false
+        })
+        message.success(`${this.user ? '修改' : '添加'}用户成功`)
+        this.getUsers()
+      }else {
+        message.error(result.msg)
+      }
+    })
 
   }
   /* 修改用户   */
@@ -90,6 +106,7 @@ export default class User extends Component {
     this.setState({
       addShow: true
     })
+   // this.form.current.setFieldsValue({"username":"qwqw"})
     this.user = user
 
   }
@@ -103,10 +120,8 @@ export default class User extends Component {
           message.success("删除用户成功")
           this.getUsers()
         }
-
       }
     });
-
   }
   /* 初始化用户数据 */
   getUsers = async () => {
@@ -148,8 +163,9 @@ export default class User extends Component {
           dataSource={users}
           columns={this.columns}
           pagination={{ defaultPageSize: 3 }} />
-        <Modal title={user._id ? "修改用户" : "添加用户"} visible={addShow} onOk={this.addhandleOk} onCancel={this.onCancel} >
-          <Form {...layout} initialValues={user} ref={this.form} >
+        <Modal title={user._id ? "修改用户" : "添加用户"}
+        destroyOnClose={true} visible={addShow} onOk={this.addhandleOk} onCancel={this.onCancel} >
+          <Form {...layout} ref={ this.form  } initialValues={user} >
             <Item
               label="用户名"
               name="username"
